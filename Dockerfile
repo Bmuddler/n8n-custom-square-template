@@ -1,11 +1,10 @@
 FROM n8nio/n8n
 
-# Optional: if you add custom nodes, make sure they're copied
+# Copy your entire repo (includes custom nodes)
 COPY . /data
 WORKDIR /data
 
-# Install dependencies (for custom code)
-RUN npm install
+# REMOVE npm install – not needed here
 
-# Run n8n
 CMD ["n8n"]
+
