@@ -1,13 +1,12 @@
 FROM n8nio/n8n
 
-# Create folder for custom extensions
-RUN mkdir -p /home/node/.n8n/custom
+# Set working directory
+WORKDIR /data
 
-# Copy your Square node to that custom path
-COPY ./packages/nodes-base/nodes/Square /home/node/.n8n/custom/nodes/Square
+# Copy your custom node to the custom nodes folder
+COPY ./packages/nodes-base/nodes/Square /data/custom/nodes/Square
 
-# Let n8n know to load from this folder
-ENV N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom
+# Set environment variable to register the node path
+ENV N8N_CUSTOM_EXTENSIONS=/data/custom
 
-# Run n8n
 CMD ["n8n"]
